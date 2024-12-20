@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+    static Scanner userInput = new Scanner(System.in);
+
+    public static void main(String[] args)
+    {
+
+        System.out.println("Enter the number of classes: ");
+        int numClasses = userInput.nextInt();
+        double [] grades = new double [numClasses];
+        double [] credits = new double [numClasses];
+        for (int i = 0; i < numClasses; i++)
+        {
+            System.out.println("Enter Grade for Class " + (i + 1) + ": ");
+            grades[i] = userInput.nextDouble();
+            System.out.println("Enter number of credits for Class " + (i+1) + ": ");
+            credits[i] = userInput.nextDouble();
+        }
+        System.out.format("Your GPA is %.2f", computeGPA(grades, credits));
+    }
+    static double computeGPA(double [] grades, double [] credits)
+    {
+        double totalCredits = 0;
+        double finalGrades = 0;
+        for (int i = 0; i < grades.length; i++)
+        {
+            finalGrades += (grades[i] * credits[i]);
+            totalCredits += credits[i];
+        }
+
+        return finalGrades/totalCredits;
+    }
+}
+
+Output
+
+
+Enter the number of classes: 
+3
+Enter Grade for Class 1: 
+3.33
+Enter number of credits for Class 1: 
+4
+Enter Grade for Class 2: 
+1.67
+Enter number of credits for Class 2: 
+3
+Enter Grade for Class 3: 
+4.00
+Enter number of credits for Class 3: 
+2
+Your GPA is 2.93
