@@ -1,0 +1,53 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main
+{
+    static Scanner userInput = new Scanner(System.in);
+    public static void main (String[] args)
+    {
+
+        int number = errorTrap("Enter a number between 1 and 20");
+        System.out.println("The double factorial of " + doubleFactorial(number));
+    }
+    private static int doubleFactorial(int value)
+    {
+        if (value <= 2)
+        {
+            return value;
+        }
+        return doubleFactorial(value-2) * value;
+    }
+    static int errorTrap(String message)
+    {
+        int choice;
+        String dummy;
+
+        while(true)
+        {
+            try
+            {
+                System.out.println(message);
+                choice = userInput.nextInt();
+                return choice;
+            }
+            catch(InputMismatchException e)
+            {
+                dummy = userInput.nextLine();
+                System.out.println("Invalid input. Try again.");
+                continue;
+            }
+        }
+
+    }
+}
+
+Output
+
+Enter a number between 1 and 20
+g
+Invalid input. Try again.
+Enter a number between 1 and 20
+5
+The double factorial of 15
+
